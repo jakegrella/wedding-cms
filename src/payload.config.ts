@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const whitelistUrls = process.env.WHITELIST_URLS?.split(',').map((url) => url.trim()) ?? []
 
 export default buildConfig({
   admin: {
@@ -35,7 +36,7 @@ export default buildConfig({
   sharp,
   plugins: [],
   cors: {
-    origins: [process.env.FRONTEND_URL || '', process.env.BACKEND_URL || ''],
+    origins: whitelistUrls,
   },
-  csrf: [process.env.FRONTEND_URL || '', process.env.BACKEND_URL || ''],
+  csrf: whitelistUrls,
 })
