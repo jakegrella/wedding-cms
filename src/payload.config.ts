@@ -5,6 +5,8 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
+import { Guests } from './collections/Guests'
+import { GuestGroups } from './collections/GuestGroups'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 
@@ -18,7 +20,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Guests, GuestGroups],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -31,4 +33,8 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
+  cors: {
+    origins: [process.env.FRONTEND_URL || '', process.env.BACKEND_URL || ''],
+  },
+  csrf: [process.env.FRONTEND_URL || '', process.env.BACKEND_URL || ''],
 })

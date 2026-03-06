@@ -1,24 +1,25 @@
 import type { CollectionConfig } from 'payload'
 
-export const Users: CollectionConfig = {
-  slug: 'users',
+export const GuestGroups: CollectionConfig = {
+  slug: 'guest-groups',
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'name',
   },
   access: {
-    read: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
+    read: ({ req: { user } }) => Boolean(user),
     create: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
     update: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
     delete: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
     admin: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
   },
-  auth: true,
+  auth: {
+    loginWithUsername: true,
+  },
   fields: [
-    // Email added by default
     {
-      name: 'role',
-      type: 'select',
-      options: ['Admin', 'User'],
+      name: 'name',
+      type: 'text',
+      required: true,
     },
   ],
 }
