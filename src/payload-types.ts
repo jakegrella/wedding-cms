@@ -77,7 +77,11 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    'guest-groups': {
+      guests: 'guests';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -187,7 +191,7 @@ export interface Media {
 export interface Guest {
   id: number;
   name: string;
-  group?: (number | null) | GuestGroup;
+  guestGroup: number | GuestGroup;
   rsvpStatus: 'pending' | 'accepted' | 'declined';
   dietaryRestrictions?: string | null;
   plusOne?: boolean | null;
@@ -202,6 +206,11 @@ export interface Guest {
 export interface GuestGroup {
   id: number;
   name: string;
+  guests?: {
+    docs?: (number | Guest)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   updatedAt: string;
   createdAt: string;
   email?: string | null;
@@ -361,7 +370,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface GuestsSelect<T extends boolean = true> {
   name?: T;
-  group?: T;
+  guestGroup?: T;
   rsvpStatus?: T;
   dietaryRestrictions?: T;
   plusOne?: T;
@@ -375,6 +384,7 @@ export interface GuestsSelect<T extends boolean = true> {
  */
 export interface GuestGroupsSelect<T extends boolean = true> {
   name?: T;
+  guests?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

@@ -8,7 +8,15 @@ export const Guests: CollectionConfig = {
   access: {
     read: ({ req: { user } }) => Boolean(user),
     create: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
-    update: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
+    update: ({ req: { user }, id }) => {
+      if (
+        user?.collection === 'guest-groups' &&
+        user?.guests?.docs?.some((i) => typeof i === 'object' && i.id === id)
+      )
+        return true // guest can update self
+      if (user?.collection === 'users' && user.role === 'Admin') return true // admin can update any guest
+      return user?.id === id // user can update self
+    },
     delete: ({ req: { user } }) => user?.collection === 'users' && user.role === 'Admin',
   },
   fields: [
@@ -18,9 +26,11 @@ export const Guests: CollectionConfig = {
       required: true,
     },
     {
-      name: 'group',
+      name: 'guestGroup',
       type: 'relationship',
       relationTo: 'guest-groups',
+      hasMany: false,
+      required: true,
     },
     {
       name: 'rsvpStatus',
