@@ -211,6 +211,7 @@ export interface GuestGroup {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  saveTheDateSent?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email?: string | null;
@@ -385,6 +386,7 @@ export interface GuestsSelect<T extends boolean = true> {
 export interface GuestGroupsSelect<T extends boolean = true> {
   name?: T;
   guests?: T;
+  saveTheDateSent?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

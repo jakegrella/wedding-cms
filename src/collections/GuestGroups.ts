@@ -30,5 +30,11 @@ export const GuestGroups: CollectionConfig = {
       collection: 'guests',
       on: 'guestGroup',
     },
+    {
+      name: 'saveTheDateSent',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Save the Date Sent',
+    },
   ],
 }
