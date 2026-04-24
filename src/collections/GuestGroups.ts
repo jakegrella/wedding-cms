@@ -36,5 +36,14 @@ export const GuestGroups: CollectionConfig = {
       defaultValue: false,
       label: 'Save the Date Sent',
     },
+    {
+      name: 'letterWritten',
+      admin: {
+        description: 'Has the letter to the guest group been written on the physical card?',
+      },
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Letter Written',
+    },
   ],
 }

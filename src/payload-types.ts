@@ -212,6 +212,10 @@ export interface GuestGroup {
     totalDocs?: number;
   };
   saveTheDateSent?: boolean | null;
+  /**
+   * Has the letter to the guest group been written on the physical card?
+   */
+  letterWritten?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email?: string | null;
@@ -387,6 +391,7 @@ export interface GuestGroupsSelect<T extends boolean = true> {
   name?: T;
   guests?: T;
   saveTheDateSent?: T;
+  letterWritten?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
