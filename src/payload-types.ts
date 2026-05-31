@@ -197,6 +197,11 @@ export interface Guest {
   plusOne?: boolean | null;
   comment?: string | null;
   welcomePartyRsvpStatus: 'pending' | 'accepted' | 'declined';
+  coffeeMeetupRsvpStatus: 'pending' | 'accepted' | 'declined';
+  hikeRsvpStatus: 'pending' | 'accepted' | 'declined';
+  clubRsvpStatus: 'pending' | 'accepted' | 'declined';
+  beachDayRsvpStatus: 'pending' | 'accepted' | 'declined';
+  preFireworksShowRsvpStatus: 'pending' | 'accepted' | 'declined';
   updatedAt: string;
   createdAt: string;
 }
@@ -382,6 +387,11 @@ export interface GuestsSelect<T extends boolean = true> {
   plusOne?: T;
   comment?: T;
   welcomePartyRsvpStatus?: T;
+  coffeeMeetupRsvpStatus?: T;
+  hikeRsvpStatus?: T;
+  clubRsvpStatus?: T;
+  beachDayRsvpStatus?: T;
+  preFireworksShowRsvpStatus?: T;
   updatedAt?: T;
   createdAt?: T;
 }
