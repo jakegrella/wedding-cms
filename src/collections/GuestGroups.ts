@@ -45,5 +45,11 @@ export const GuestGroups: CollectionConfig = {
       defaultValue: false,
       label: 'Letter Written',
     },
+    {
+      name: 'getReadyInfoSent',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Get Ready Info Sent',
+    },
   ],
 }

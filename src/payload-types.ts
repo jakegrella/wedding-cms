@@ -222,6 +222,7 @@ export interface GuestGroup {
    * Has the letter to the guest group been written on the physical card?
    */
   letterWritten?: boolean | null;
+  getReadyInfoSent?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email?: string | null;
@@ -404,6 +405,7 @@ export interface GuestGroupsSelect<T extends boolean = true> {
   guests?: T;
   saveTheDateSent?: T;
   letterWritten?: T;
+  getReadyInfoSent?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
