@@ -196,6 +196,7 @@ export interface Guest {
   dietaryRestrictions?: string | null;
   plusOne?: boolean | null;
   comment?: string | null;
+  welcomePartyRsvpStatus: 'pending' | 'accepted' | 'declined';
   updatedAt: string;
   createdAt: string;
 }
@@ -380,6 +381,7 @@ export interface GuestsSelect<T extends boolean = true> {
   dietaryRestrictions?: T;
   plusOne?: T;
   comment?: T;
+  welcomePartyRsvpStatus?: T;
   updatedAt?: T;
   createdAt?: T;
 }

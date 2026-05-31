@@ -56,5 +56,17 @@ export const Guests: CollectionConfig = {
       name: 'comment',
       type: 'textarea',
     },
+    {
+      name: 'welcomePartyRsvpStatus',
+      label: 'Welcome Party RSVP Status',
+      type: 'select',
+      required: true,
+      defaultValue: 'pending',
+      options: [
+        { label: 'Pending', value: 'pending' },
+        { label: 'Accepted', value: 'accepted' },
+        { label: 'Declined', value: 'declined' },
+      ],
+    },
   ],
 }
